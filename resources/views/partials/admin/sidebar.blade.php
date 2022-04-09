@@ -40,12 +40,12 @@
                 </a>
               </li>
 
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a class="nav-link {{ request()->is('admin/business_permit_clearance') || request()->is('admin/business_permit_clearance/*') ? 'active' : '' }}" href="{{ route("admin.business_permit_clearance.index") }}">
                   <i class="far fa-list-alt fa-lg "></i>
                   <span class="nav-link-text text-uppercase">Manage Business Permit Clearance</span>
                 </a>
-              </li>
+              </li> -->
 
               <li class="nav-item">
                 <a class="nav-link {{ request()->is('admin/barangay_health_certificate') || request()->is('admin/barangay_health_certificate/*') ? 'active' : '' }}" href="{{ route("admin.barangay_health_certificate.index") }}">

@@ -35,6 +35,7 @@ class UserController extends Controller
             'address' => $request->input('address'),
             'contact_number' => $request->input('contact_number'),
             'date_of_birth' => $request->input('date_of_birth'),
+            'registered_voter' => $request->input('registered_voter'),
         ]);
 
         return response()->json(['success' => 'Updated Successfully.']);

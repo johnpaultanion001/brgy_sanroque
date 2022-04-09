@@ -23,6 +23,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'address',
         'contact_number',
         'date_of_birth',
+        'registered_voter',
         'role',
     ];
 
@@ -47,6 +48,19 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function brgy_certificate()
     {
-        return $this->hasMany(BrgyCertificate::class, 'user_id', 'id');
+        return $this->hasMany(CertificateOfResidency::class, 'user_id', 'id');
+    }
+
+    public function brgy_health_certificate()
+    {
+        return $this->hasMany(BarangayHealthCertificate::class, 'user_id', 'id');
+    }
+    public function brgy_health_indigency()
+    {
+        return $this->hasMany(BarangayIndigency::class, 'user_id', 'id');
+    }
+    public function appointments()
+    {
+        return $this->hasMany(Appointment::class, 'user_id', 'id');
     }
 }

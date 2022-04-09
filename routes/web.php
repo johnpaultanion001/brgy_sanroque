@@ -66,6 +66,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
      Route::get('resident_list/{user}/edit', 'ResidentListController@edit')->name('resident.edit');
      Route::put('resident_list/{user}', 'ResidentListController@update')->name('resident.update');
      Route::put('resident_list/{user}/dpass', 'ResidentListController@defaultPassowrd')->name('resident.dpass');
+     Route::delete('resident_list/{user}', 'ResidentListController@destroy')->name('resident.destroy');
 
      // Appointments
      Route::resource('appointments', 'AppointmentController');

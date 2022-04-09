@@ -44,6 +44,7 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'address' => ['required'],
             'contact_number' => ['required', 'string', 'min:8','max:11','unique:users'],
+            'registered_voter' =>  ['required'],
             'date_of_birth' => ['required', 'date' , 'before:today'],
             ]);
     }
@@ -63,6 +64,7 @@ class RegisterController extends Controller
             'contact_number' => $data['contact_number'],
             'address' => $data['address'],
             'date_of_birth' => $data['date_of_birth'],
+            'registered_voter' => $data['registered_voter'],
             'role' => 'resident',
         ]);
     }

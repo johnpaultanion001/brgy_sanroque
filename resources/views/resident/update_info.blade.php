@@ -20,7 +20,7 @@
 
         <div class="row">
           <div class="col-md-10 ml-auto mr-auto">
-            <h2 class="text-center title text-white">Update Information</h2>
+            <h2 class="text-center title">Update Information</h2>
           </div>
     
           <div class="col-md-12">
@@ -36,9 +36,7 @@
                             <input type="email" name="email" id="email" class="form-control" value="{{Auth::user()->email}}" readonly>
                           </div>
                         </div>
-                    </div>
-
-                    <div class="row">
+                   
                       <div class="col-md-6">
                         <div class="form-group">
                           <label class="bmd-label-floating">Name <span class="text-danger">*</span></label>
@@ -70,14 +68,26 @@
                       </div>
 
                       <div class="col-md-6">
-                      <div class="form-group">
-                          <label class="bmd-label-floating">Date Of Birth <span class="text-danger">*</span></label>
-                          <input type="date" id="date_of_birth" name="date_of_birth" class="form-control" value="{{Auth::user()->date_of_birth}}">
-                          <span class="invalid-feedback" role="alert">
-                              <strong id="error-date_of_birth"></strong>
-                          </span>
+                        <div class="form-group">
+                            <label class="bmd-label-floating">Date Of Birth <span class="text-danger">*</span></label>
+                            <input type="date" id="date_of_birth" name="date_of_birth" class="form-control" value="{{Auth::user()->date_of_birth}}">
+                            <span class="invalid-feedback" role="alert">
+                                <strong id="error-date_of_birth"></strong>
+                            </span>
+                        </div>
                       </div>
-                    </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="bmd-label-floating">Registered Voter <span class="text-danger">*</span></label>
+                            <select class="form-control" name="registered_voter" id="registered_voter">
+                              <option value="YES" {{Auth::user()->registered_voter == 'YES' ? 'SELECTED' : ''}}>YES</option>
+                              <option value="NO" {{Auth::user()->registered_voter == 'NO' ? 'SELECTED' : ''}}>NO</option>
+                            </select>
+                            <span class="invalid-feedback" role="alert">
+                                <strong id="error-registered_voter"></strong>
+                            </span>
+                        </div>
+                      </div>
 
                     </div>
                   

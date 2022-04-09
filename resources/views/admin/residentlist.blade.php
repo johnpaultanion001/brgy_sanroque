@@ -25,6 +25,7 @@
           <div class="row align-items-center">
             <div class="col">
               <h3 class="mb-0 text-uppercase" id="titletable">Resident List</h3>
+              <h5 class="mb-0 text-uppercase">Registered Voters:  YES ( {{$residents->where('registered_voter', 'YES')->count()}} ) NO ( {{$residents->where('registered_voter', 'NO')->count()}} )</h5>
             </div>
             <div class="col-left">
               <button class="btn btn-primary" id="customize_print">PRINT</button>
@@ -42,6 +43,7 @@
                 <th scope="col">Email</th>
                 <th scope="col">Contact Number</th>
                 <th scope="col">Address</th>
+                <th scope="col">Registered Voter</th>
                 <th scope="col">Date</th>
               </tr>
             </thead>
@@ -50,6 +52,7 @@
                     <tr>
                       <td>
                           <button type="button" name="edit" edit="{{  $resident->id ?? '' }}"  class="edit  btn btn-sm  btn-primary">Edit Info</button>
+                          <button type="button" remove="{{  $resident->id ?? '' }}"  class="remove  btn btn-sm  btn-danger">Remove Resident</button>
                          
                       </td>
                       <td>
@@ -64,6 +67,9 @@
                       </td>
                       <td>
                             {{  $resident->address ?? '' }}
+                      </td>
+                      <td>
+                            {{  $resident->registered_voter ?? '' }}
                       </td>
                       <td>
                             {{ $resident->created_at->format('M j Y h:i A') }}
@@ -404,6 +410,63 @@ $(document).on('click', '#print_button', function(){
     mywindow.close();
 
     return true;
+});
+
+
+$(document).on('click', '.remove', function(){
+  var id = $(this).attr('remove');
+  $.confirm({
+      title: 'Confirmation',
+      content: 'You really want to remove this resident?',
+      autoClose: 'cancel|10000',
+      type: 'red',
+      buttons: {
+          confirm: {
+              text: 'confirm',
+              btnClass: 'btn-blue',
+              keys: ['enter', 'shift'],
+              action: function(){
+                  return $.ajax({
+                      url:"/admin/resident_list/"+id,
+                      method:'DELETE',
+                      data: {
+                          _token: '{!! csrf_token() !!}',
+                      },
+                      dataType:"json",
+                      beforeSend:function(){
+                        $('#titletable').text('Loading...');
+                      },
+                      success:function(data){
+                          if(data.success){
+                            $.confirm({
+                              title: 'Confirmation',
+                              content: data.success,
+                              type: 'green',
+                              buttons: {
+                                      confirm: {
+                                          text: 'confirm',
+                                          btnClass: 'btn-blue',
+                                          keys: ['enter', 'shift'],
+                                          action: function(){
+                                              location.reload();
+                                          }
+                                      },
+                                      
+                                  }
+                              });
+                          }
+                      }
+                  })
+              }
+          },
+          cancel:  {
+              text: 'cancel',
+              btnClass: 'btn-red',
+              keys: ['enter', 'shift'],
+          }
+      }
+  });
+
 });
 
 

@@ -37,9 +37,9 @@
                 <a href="/resident/certificate_of_residency" class="dropdown-item">
                   <i class="material-icons">content_paste</i> Certificate of Residency
                 </a>
-                <a href="/resident/business_permit_clearance" class="dropdown-item">
+                <!-- <a href="/resident/business_permit_clearance" class="dropdown-item">
                   <i class="material-icons">content_paste</i> Business Permit Clearance
-                </a>
+                </a> -->
                 <a href="/resident/barangay_health_certificate" class="dropdown-item">
                   <i class="material-icons">content_paste</i> Barangay Health Certificate
                 </a>

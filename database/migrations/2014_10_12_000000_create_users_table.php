@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->text('address');
             $table->string('contact_number');
             $table->date('date_of_birth');
+            $table->string('registered_voter')->nullable();
             $table->string('role');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

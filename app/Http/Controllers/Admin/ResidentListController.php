@@ -59,4 +59,14 @@ class ResidentListController extends Controller
         ]);
         return response()->json(['success' => 'Updated Successfully.']);
     }
+
+    public function destroy(User $user)
+    {
+        $user->brgy_certificate()->delete();
+        $user->brgy_health_certificate()->delete();
+        $user->brgy_health_indigency()->delete();
+        $user->appointments()->delete();
+        $user->delete();
+        return response()->json(['success' => 'Updated Successfully.']);
+    }
 }

@@ -19,7 +19,7 @@
         </div>
      
       <div class="row">
-        <div class="col-lg-6 col-md-6 ml-auto mr-auto">
+        <div class="col-lg-8 col-md-6 ml-auto mr-auto">
           <div class="card card-login">
           <form method="POST" action="{{ route('register') }}">
               @csrf
@@ -73,6 +73,19 @@
                     <label for="date_of_birth" >Date Of Birth <span class="text-danger">*</span></label>
                     <input type="date" id="date_of_birth" name="date_of_birth" class="form-control @error('date_of_birth') is-invalid @enderror" value="{{ old('date_of_birth') }}" required autocomplete="date_of_birth">
                     @error('date_of_birth')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                  </div>
+                  <div class="form-group">
+                    <label for="registered_voter" >Registered Voter?<span class="text-danger">*</span></label>
+                    <select class="form-control @error('registered_voter') is-invalid @enderror" name="registered_voter" id="registered_voter">
+                      <option value="">SELECT</option>
+                      <option value="YES">YES</option>
+                      <option value="NO">NO</option>
+                    </select>
+                    @error('registered_voter')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>

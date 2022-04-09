@@ -1,10 +1,13 @@
 <nav class="navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg" color-on-scroll="100" id="sectionsNav">
       <div class="container">
         <div class="navbar-translate">
-          <a class="navbar-brand font-weight-bold h1" href="/">
-         
-          <p style="font-size: 20px"> {{ trans('panel.site_title') }} </p>
-        </a>
+          <a href="/">
+            <img src="../assets/img/logo.png" width="80" alt="..."> 
+            <a class="font-weight-bold navbar-brand ml-2" href="/">
+              {{ trans('panel.site_title') }}
+            </a>
+            
+          </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="sr-only">Toggle navigation</span>
             <span class="navbar-toggler-icon"></span>

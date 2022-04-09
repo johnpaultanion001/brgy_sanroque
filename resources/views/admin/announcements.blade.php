@@ -51,8 +51,8 @@
               @foreach($announcements as $announcement)
                     <tr>
                       <td>
-                          <button type="button" name="edit" edit="{{  $announcement->id ?? '' }}"  class="edit  btn btn-sm btn-link text-primary">Edit</button>
-                          <button type="button" name="remove" remove="{{  $announcement->id ?? '' }}" class="remove btn btn-sm btn-link text-danger">Remove</button>
+                          <button type="button" name="edit" edit="{{  $announcement->id ?? '' }}"  class="edit  btn btn-sm btn-primary">Edit</button>
+                          <button type="button" name="remove" remove="{{  $announcement->id ?? '' }}" class="remove btn btn-sm btn-danger">Remove</button>
                       </td>
                       <td>
                          <img style="vertical-align: bottom;"  height="100" width="100" src="{{URL::asset('/assets/img/announcements/'.$announcement->image)}}" />
@@ -70,7 +70,7 @@
                           {{  $announcement->user->name ?? '' }}
                       </td>
                       <td>
-                          {{ $announcement->created_at->format('l, j \\/ F / Y h:i:s A') }}
+                          {{ $announcement->created_at->format('M j Y h:i A') }}
                       </td>
                     </tr>
                 @endforeach
@@ -96,7 +96,7 @@
           <div class="modal-body">
 
                 <div class="form-group">
-                    <label for="title" class="bmd-label-floating">Title:</label>
+                    <label for="title" class="bmd-label-floating">Title: <span class="text-danger">*</span></label>
                     <input type="text" name="title" id="title" class="form-control" />
                     <span class="invalid-feedback" role="alert">
                         <strong id="error-title"></strong>
@@ -104,7 +104,7 @@
                 </div>
                   
                 <div class="form-group">
-                  <label for="body" id="lblpurpose" class="bmd-label-floating">Body:</label>
+                  <label for="body" id="lblpurpose" class="bmd-label-floating">Body: <span class="text-danger">*</span></label>
                   <textarea class="form-control body" rows="8" name="body" id="body"></textarea>
                   <span class="invalid-feedback" role="alert">
                       <strong id="error-body"></strong>
@@ -112,7 +112,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="image" class="bmd-label-floating">Image:</label>
+                    <label for="image" class="bmd-label-floating">Image: <span class="text-danger">*</span></label>
                     <input type="file" name="image" class="form-control image" accept="image/*" />
                     <span class="invalid-feedback" role="alert">
                         <strong id="error-image"></strong>

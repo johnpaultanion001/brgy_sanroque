@@ -26,6 +26,9 @@
             <div class="col">
               <h3 class="mb-0 text-uppercase" id="titletable">Manage Barangay Health Certificate</h3>
             </div>
+            <div class="col-left">
+              <button class="btn btn-primary" id="customize_print">PRINT</button>
+            </div>
             
           </div>
         </div>
@@ -50,8 +53,8 @@
               @foreach($brgyCertificates as $brgyCertificate)
                     <tr>
                       <td>
-                          <button type="button" name="change" change="{{  $brgyCertificate->id ?? '' }}"  class="change  btn btn-sm btn-link text-primary">Change Status</button>
-                          <button type="button" name="remove" remove="{{  $brgyCertificate->id ?? '' }}" class="remove btn btn-sm btn-link text-danger">Remove</button>
+                          <button type="button" name="change" change="{{  $brgyCertificate->id ?? '' }}"  class="change  btn btn-sm  btn-primary">Change Status</button>
+                          <button type="button" name="remove" remove="{{  $brgyCertificate->id ?? '' }}" class="remove btn btn-sm  btn-danger">Remove</button>
                       </td>
                       <td>
                           {{  $brgyCertificate->purpose ?? '' }}
@@ -71,25 +74,25 @@
                       </td>
                       
                       <td>
-                            @if($brgyCertificate->status == 0)
-                                  <p class="badge badge-warning">Pending</p><br>
-                            @elseif ($brgyCertificate->status == 1)
-                                <p class="badge badge-success">Approved</p>
-                            @elseif ($brgyCertificate->status == 2)
-                                <p class="badge badge-danger">Decline</p>
-                            @elseif ($brgyCertificate->status == 3)
-                                <p class="badge badge-primary">Claimed</p>
-                            @endif
+                          @if($brgyCertificate->status == 0)
+                                <span class="badge-warning p-2">Pending</span><br>
+                          @elseif ($brgyCertificate->status == 1)
+                              <span class="badge-success p-2">Approved</span>
+                          @elseif ($brgyCertificate->status == 2)
+                              <span class="badge-danger p-2">Decline</span>
+                          @elseif ($brgyCertificate->status == 3)
+                              <span class="badge-primary p-2">Claimed</span>
+                          @endif
                       </td>
                       <td>
                           {{  $brgyCertificate->comment ?? '' }}
                       </td>
                       <td>
-                          {{ $brgyCertificate->created_at->format('l, j \\/ F / Y h:i:s A') }}
+                          {{ $brgyCertificate->created_at->format('M j Y h:i A') }}
                       </td>
                       <td>
                           @if($brgyCertificate->status == 3)
-                            {{ $brgyCertificate->updated_at->format('l, j \\/ F / Y h:i:s A') }}
+                            {{ $brgyCertificate->updated_at->format('M j Y h:i A') }}
                           @endif
                       </td>
                     </tr>
@@ -104,47 +107,136 @@
 
 <form method="post" id="myForm" class="contact-form">
     @csrf
-    <div class="modal fade" id="formModal" tabindex="-1" role="dialog">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Modal title</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <i class="fas fa-times"></i>
-            </button>
-          </div>
-          <div class="modal-body">
-                    <div class="form-group">
-                      <label for="status" class="bmd-label-floating">Status</label>
-                      <select name="status" id="status" class="form-control select2">
-                          <option value="" disabled selected>Select Status</option>
-                              <option value="0">Pending</option>
-                              <option value="1">Approve</option>
-                              <option value="2">Decline</option>
-                              <option value="3">Claimed</option>
-                      </select>
-                    </div>
-                  
-                <div class="form-group">
-                  <label for="comment" id="lblpurpose" class="bmd-label-floating">Comment:</label>
-                  <textarea class="form-control comment" rows="4" name="comment" id="comment"></textarea>
-                  <span class="invalid-feedback" role="alert">
-                      <strong id="error-comment"></strong>
-                  </span>
-                </div>
+  <div class="modal fade" id="formModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+                  <div class="form-group">
+                    <label for="status" class="bmd-label-floating">Status <span class="text-danger">*</span></label>
+                    <select name="status" id="status" class="form-control select2">
+                        <option value="" disabled selected>Select Status</option>
+                            <option value="0">Pending</option>
+                            <option value="1">Approve</option>
+                            <option value="2">Decline</option>
+                            <option value="3">Claimed</option>
+                    </select>
+                  </div>
+                
+              <div class="form-group">
+                <label for="comment" id="lblpurpose" class="bmd-label-floating">Comment: <span class="text-danger">*</span></label>
+                <textarea class="form-control comment" rows="4" name="comment" id="comment"></textarea>
+                <span class="invalid-feedback" role="alert">
+                    <strong id="error-comment"></strong>
+                </span>
+              </div>
 
-                <input type="hidden" name="action" id="action" value="Add" />
-                <input type="hidden" name="hidden_id" id="hidden_id" />
-              
-          </div>
-          <div class="modal-footer">
-            <input type="submit" name="action_button" id="action_button" class="btn btn-link text-primary" value="Save" />
-            <button type="button" class="btn text-danger btn-link" data-dismiss="modal">Close</button>
-          </div>
+              <input type="hidden" name="action" id="action" value="Add" />
+              <input type="hidden" name="hidden_id" id="hidden_id" />
+            
+        </div>
+        <div class="modal-footer">
+          <input type="submit" name="action_button" id="action_button" class="btn btn-link text-primary" value="Save" />
+          <button type="button" class="btn text-danger btn-link" data-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
-  </form>
+  </div>
+</form>
+
+<div class="modal fade" id="printModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">PRINT</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="print_modal" id="print_modal">
+            <div class="table-responsive">
+              <table class="table" id="table_print">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">Purpose</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Contact Number</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Admin Comment</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Date Claimed</th>
+                  </tr>
+                </thead>
+                <tbody class="text-uppercase font-weight-bold">
+                  @foreach($brgyCertificates as $brgyCertificate)
+                        <tr>
+                          <td>
+                              {{  $brgyCertificate->purpose ?? '' }}
+                          </td>
+                          <td>
+                              {{  $brgyCertificate->user->name ?? '' }}
+                          </td>
+                          <td>
+                              {{  $brgyCertificate->user->email ?? '' }}
+                          </td>
+
+                          <td>
+                                {{  $brgyCertificate->user->contact_number ?? '' }}
+                          </td>
+                          <td>
+                                {{  $brgyCertificate->user->address ?? '' }}
+                          </td>
+                          
+                          <td>
+                              @if($brgyCertificate->status == 0)
+                                    <span class="badge-warning p-2">Pending</span><br>
+                              @elseif ($brgyCertificate->status == 1)
+                                  <span class="badge-success p-2">Approved</span>
+                              @elseif ($brgyCertificate->status == 2)
+                                  <span class="badge-danger p-2">Decline</span>
+                              @elseif ($brgyCertificate->status == 3)
+                                  <span class="badge-primary p-2">Claimed</span>
+                              @endif
+                          </td>
+                          <td>
+                              {{  $brgyCertificate->comment ?? '' }}
+                          </td>
+                          <td>
+                              {{ $brgyCertificate->created_at->format('M j Y h:i A') }}
+
+                             
+                          </td>
+                          <td>
+                              @if($brgyCertificate->status == 3)
+                                {{ $brgyCertificate->updated_at->format('M j Y h:i A') }}
+                              @endif
+                          </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+              </table> 
+             
+            </div>
+            <br><br><br><br>
+            <h4 class="text-uppercase">PREPARED BY:{{Auth::user()->name}}</h4>
+          </div>
+          
+        </div>
+        <div class="modal-footer">
+          <input type="submit" name="print_button" id="print_button" class="btn  btn-primary" value="PRINT" />
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+</div>
 
 @section('footer')
     @include('../partials.admin.footer')
@@ -336,6 +428,31 @@ $(document).on('click', '.remove', function(){
       }
   });
 
+});
+
+$(document).on('click', '#customize_print', function(){
+  $('#printModal').modal('show');
+});
+
+
+
+
+$(document).on('click', '#print_button', function(){
+    var mywindow = window.open('', 'PRINT');
+
+    mywindow.document.write('<html><head><title>' + document.title  + '</title>'); 
+    mywindow.document.write('</head><body style="@media page{size: landscape;}">');
+    
+    mywindow.document.write(document.getElementById("print_modal").innerHTML);
+    mywindow.document.write('</body></html>');
+
+    mywindow.document.close();
+    mywindow.focus(); 
+
+    mywindow.print();
+    mywindow.close();
+
+    return true;
 });
 
 

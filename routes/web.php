@@ -4,10 +4,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'LandingpageController@index')->name('landingpage');
 Route::get('view/{announcement}', 'LandingpageController@view')->name('view');
+Route::get('send-email', 'MailController@sendMail')->name('test');
+Route::get('/clear-cache', function() {
+    $exitCode = Artisan::call('optimize:clear');
+    // return what you want
+});
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
-Route::group(['prefix' => 'resident', 'as' => 'resident.', 'namespace' => 'Resident', 'middleware' => ['auth']], function () {
+Route::group(['prefix' => 'resident', 'as' => 'resident.', 'namespace' => 'Resident', 'middleware' => ['auth', 'verified']], function () {
     // Home
     Route::get('home', 'HomeController@index')->name('home');
 

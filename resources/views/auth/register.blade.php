@@ -30,7 +30,7 @@
               <br><br>
               <div class="card-body">
                   <div class="form-group">
-                    <label for="name" class="bmd-label-floating">Name</label>
+                    <label for="name" class="bmd-label-floating">Name <span class="text-danger">*</span></label>
                     <input type="text" id="name" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" required autocomplete="name" autofocus>
                     @error('name')
                         <span class="invalid-feedback" role="alert">
@@ -40,7 +40,7 @@
                   </div>
 
                   <div class="form-group">
-                    <label for="email" class="bmd-label-floating">Email</label>
+                    <label for="email" class="bmd-label-floating">Email<span class="text-danger">*</span></label>
                     <input type="email" id="email" name="email" class="form-control @error('email') is-invalid @enderror"  value="{{ old('email') }}" required autocomplete="email">
                     @error('email')
                         <span class="invalid-feedback" role="alert">
@@ -50,7 +50,7 @@
                   </div>
 
                   <div class="form-group">
-                    <label for="contact_number" class="bmd-label-floating">Contact Number</label>
+                    <label for="contact_number" class="bmd-label-floating">Contact Number<span class="text-danger">*</span></label>
                     <input type="number" id="contact_number" name="contact_number" class="form-control @error('contact_number') is-invalid @enderror"  value="{{ old('contact_number') }}" required autocomplete="contact_number">
                     @error('contact_number')
                         <span class="invalid-feedback" role="alert">
@@ -60,7 +60,7 @@
                   </div>
 
                   <div class="form-group">
-                    <label for="address" class="bmd-label-floating">Address</label>
+                    <label for="address" class="bmd-label-floating">Address <span class="text-danger">*</span></label>
                     <input type="text" id="address" name="address" class="form-control @error('address') is-invalid @enderror" value="{{ old('address') }}" required autocomplete="address">
                     @error('address')
                       <span class="invalid-feedback" role="alert">
@@ -70,7 +70,7 @@
                   </div>
 
                   <div class="form-group">
-                    <label for="date_of_birth" >Date Of Birth</label>
+                    <label for="date_of_birth" >Date Of Birth <span class="text-danger">*</span></label>
                     <input type="date" id="date_of_birth" name="date_of_birth" class="form-control @error('date_of_birth') is-invalid @enderror" value="{{ old('date_of_birth') }}" required autocomplete="date_of_birth">
                     @error('date_of_birth')
                         <span class="invalid-feedback" role="alert">
@@ -80,7 +80,7 @@
                   </div>
 
                   <div class="form-group">
-                    <label for="password"class="bmd-label-floating" >Password</label>
+                    <label for="password"class="bmd-label-floating" >Password <span class="text-danger">*</span></label>
                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" >
                      @error('password')
                         <span class="invalid-feedback" role="alert">
@@ -90,7 +90,7 @@
                   </div>
 
                   <div class="form-group">
-                    <label for="password-confirm" class="bmd-label-floating">Confirm Password</label>
+                    <label for="password-confirm" class="bmd-label-floating">Confirm Password <span class="text-danger">*</span></label>
                     <input type="password" id="password-confirm" name="password_confirmation" class="form-control" required autocomplete="new-password">
                   </div>
 

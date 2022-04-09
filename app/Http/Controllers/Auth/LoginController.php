@@ -41,6 +41,15 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    protected function validateLogin(Request $request)
+    {
+        $request->validate([
+            $this->username() => 'required|string',
+            'password' => 'required|string',
+            'g-recaptcha-response' => 'required|captcha'
+        ]);
+    }
+
     protected function sendLoginResponse(Request $request)
     {
         $request->session()->regenerate();
@@ -49,7 +58,7 @@ class LoginController extends Controller
 
          if ($response = $this->authenticated($request, $this->guard()->user())) {
              return $response;
-      }
+            }
 
         
          if(Auth::user()->role == 'resident'){
@@ -62,4 +71,6 @@ class LoginController extends Controller
                      ? new JsonResponse([], 204)
                      : redirect($redirectTo);
      }
+
+     
 }

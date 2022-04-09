@@ -20,7 +20,7 @@
 
         <div class="row">
           <div class="col-md-12 text-center">
-            <h2 class="text-center title text-white">Appointments</h2>
+            <h2 class="text-center title">Appointments</h2>
           </div>
           <div class="col-md-12 text-right">
             <button class="btn btn-primary btn-raised" name="create_record" id="create_record" >Set A Appointment</button>
@@ -30,13 +30,13 @@
               <div class="col-lg-12 col-md-8">
                 <ul class="nav nav-pills nav-pills-icons" role="tablist">
                   <li class="nav-item">
-                    <a class="nav-link text-white active" href="#calendar-1" role="tab" data-toggle="tab">
+                    <a class="nav-link active" href="#calendar-1" role="tab" data-toggle="tab">
                       <i class="material-icons">dashboard</i>
                       Calendar
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link text-white" id="apps" href="#appointment-1" role="tab" data-toggle="tab">
+                    <a class="nav-link" id="apps" href="#appointment-1" role="tab" data-toggle="tab">
                       <i class="material-icons">schedule</i>
                       Appointments
                     </a>
@@ -151,7 +151,7 @@
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label class="label-control">Date</label>
+                      <label class="label-control">Date <span class="text-danger">*</span></label>
                       
                       <input type="text" class="form-control datetimepicker" id="date" name="date"  autocomplete="off">
 
@@ -162,7 +162,7 @@
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label class="label-control">Time</label>
+                      <label class="label-control">Time <span class="text-danger">*</span></label>
                       <input type="text" class="form-control timepicker" id="time" name="time"  autocomplete="off">
                       <span class="invalid-feedback" role="alert">
                           <strong id="error-time"></strong>
@@ -171,7 +171,7 @@
                   </div>
                   <div class="col-md-12">
                     <div class="form-group">
-                      <label class="label-control">Type Of Appointment</label>
+                      <label class="label-control">Type Of Appointment <span class="text-danger">*</span></label>
                       <select name="type_of_appointment" id="type_of_appointment" class="form-control select2">
                           <option value="" disabled selected>Select Appointment</option>
                               <option value="SESSION">SESSION</option>
@@ -185,7 +185,7 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="label-control">Purpose</label>
+                  <label class="label-control">Purpose <span class="text-danger">*</span></label>
                   <textarea class="form-control" rows="4" name="purpose" id="purpose" required></textarea>
                 </div>
 
@@ -194,8 +194,8 @@
               
           </div>
           <div class="modal-footer">
-            <input type="submit" name="action_button" id="action_button" class="btn btn-link text-primary" value="Save" />
-            <button type="button" class="btn btn-danger btn-link" data-dismiss="modal">Close</button>
+            <input type="submit" name="action_button" id="action_button" class="btn  btn-primary" value="Save" />
+            <button type="button" class="btn btn-danger " data-dismiss="modal">Close</button>
           </div>
         </div>
       </div>

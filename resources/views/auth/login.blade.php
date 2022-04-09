@@ -56,13 +56,22 @@
                         </span>
                     @enderror
                 </div>
+                <div class="input-group d-flex justify-content-center mt-4">
+                  @if ($errors->has('g-recaptcha-response'))
+                  <span class="help-block text-danger">
+                    <strong>Please verify that you are not a robot.</strong>
+                  </span>
+                  @endif
+                  {!! NoCaptcha::renderJs() !!}
+                  {!! NoCaptcha::display() !!}
+                </div>
               </div>
               <br><br><br>
               <div class="footer text-center">
                
                 <button type="submit" class="btn btn-primary btn-lg"> Login </button>
               </div>
-              <p class="description text-center">Not a member? <a href="/register">Register Now</a> </p>
+              <p class="description text-center">Not a member? <a href="{{ route('register') }}">Register Now</a> </p>
               <br><br>
             </form>
           </div>

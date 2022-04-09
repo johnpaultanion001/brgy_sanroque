@@ -96,11 +96,6 @@
       background-color: #8E0E00 !important;
       color: white;
     }
- 
-        
-    
-  
-  
     </style>
 </head>
     <body class="bg-default">

@@ -73,7 +73,9 @@
   </style>
 </head>
 
-<body class="profile-page sidebar-collapse">
+<body class="profile-page sidebar-collapse" style=" background: #200122; 
+                                                    background: -webkit-linear-gradient(to right, #6f0000, #6f0000);  
+                                                    background: linear-gradient(to right, #6f0000, #6f0000);">
   @yield('navbar')
  
   @yield('content')

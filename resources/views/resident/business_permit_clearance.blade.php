@@ -20,7 +20,7 @@
 
         <div class="row">
           <div class="col-md-12 text-center">
-            <h2 class="text-center title text-white">Business Permit Clearance</h2>
+            <h2 class="text-center title">Business Permit Clearance</h2>
           </div>
           <div class="col-md-12 text-right">
             <button class="btn btn-primary btn-raised" name="create_record" id="create_record" >Business Permit Clearance</button>
@@ -126,7 +126,7 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="purpose" id="lblpurpose" class="bmd-label-floating">Purpose</label>
+                  <label for="purpose" id="lblpurpose" class="bmd-label-floating">Purpose <span class="text-danger">*</span></label>
                   <textarea class="form-control" rows="4" name="purpose" id="purpose" required></textarea>
                 </div>
 
@@ -135,8 +135,8 @@
               
           </div>
           <div class="modal-footer">
-            <input type="submit" name="action_button" id="action_button" class="btn btn-link text-primary" value="Save" />
-            <button type="button" class="btn btn-danger btn-link" data-dismiss="modal">Close</button>
+            <input type="submit" name="action_button" id="action_button" class="btn btn-primary" value="Save" />
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
           </div>
         </div>
       </div>

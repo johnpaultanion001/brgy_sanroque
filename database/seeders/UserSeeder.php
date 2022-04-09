@@ -27,6 +27,7 @@ class UserSeeder extends Seeder
                 'address' => 'Test',
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s"),
+                'email_verified_at' => date("Y-m-d H:i:s"),
             ],
             [
                 'id'             => 2,
@@ -40,6 +41,7 @@ class UserSeeder extends Seeder
                 'address' => 'Test',
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s"),
+                'email_verified_at' => date("Y-m-d H:i:s"),
             ],
             
         ];
